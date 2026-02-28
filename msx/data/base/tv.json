@@ -1,0 +1,25 @@
+{
+   "type": "pages",
+   "headline": "Links",
+   "template": {
+      "tag": "Web",
+      "type": "separate",
+      "layout": "0,0,2,3",
+      "icon": "msx-white-soft:public",
+      "color": "msx-glass"
+   },
+   "items": [
+      {
+         "title": "My YouTube Channel",
+         "action": "link:https://drive.google.com/drive/u/0/folders/1b_cVEgDZqhISzjUA0G_oMudCxne2hHdG"
+      },
+      {
+         "title": "My GitHub Pages",
+         "action": "link:https://makinishi.github.io"
+      },
+      {
+         "title": "Stack Overflow",
+         "action": "link:window:https://stackoverflow.com"
+      }
+   ]
+}
