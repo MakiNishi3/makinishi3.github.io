@@ -1,0 +1,29 @@
+{
+   "headline": "GitHub Pages Example",
+   "menu": [
+      {
+         "icon": "info",
+         "label": "Welcome",
+         "data": "https://makinishi3.github.io/msx/data/base/welcome.json"
+      },
+      {
+         "type": "separator",
+         "label": "Base"
+      },
+      {
+         "icon": "movie",
+         "label": "Videos",
+         "data": "https://makinishi3.github.io/msx/data/base/videos.json"
+      },
+      {
+         "icon": "music-note",
+         "label": "LG IPTV",
+         "data": "https://makinishi3.github.io/msx/data/base/tv.json"
+      },
+      {
+         "icon": "image",
+         "label": "Text",
+         "data": "https://makinishi3.github.io/msx/data/base/text.json"
+      }
+   ]
+}
