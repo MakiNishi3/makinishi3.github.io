@@ -1,0 +1,47 @@
+:root{
+  --bg:#0f1724;
+  --panel:#0b1220;
+  --accent:#28a745;
+  --muted:#9aa4b2;
+  --card:#0e1620;
+}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif}
+html,body,#root{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#081021)}
+#root{display:flex;align-items:center;justify-content:center;padding:18px}
+.app{
+  width:100%;
+  max-width:980px;
+  background:linear-gradient(180deg,var(--panel),#07101a);
+  border-radius:12px;
+  padding:16px;
+  color:#e6eef6;
+  box-shadow:0 8px 30px rgba(2,6,23,.6);
+}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.logo{
+  background:var(--card);padding:10px;border-radius:8px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;color:var(--accent)
+}
+.title{font-size:18px;font-weight:600}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.btn{
+  background:#0b1320;border:1px solid rgba(255,255,255,.04);
+  color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600;
+}
+.btn.primary{background:var(--accent);color:#02110b}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+.videoCard{background:linear-gradient(180deg,#071426,#04101a);padding:10px;border-radius:10px;display:flex;flex-direction:column;gap:8px;align-items:center}
+video{max-width:100%;border-radius:8px;background:#000}
+.side{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;align-items:center}
+.range{width:100%}
+.small{font-size:13px;color:var(--muted)}
+.previewCanvas{width:100%;background:#000;border-radius:6px}
+.progress{height:8px;background:#07121a;border-radius:6px;overflow:hidden}
+.progress > bar{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#2ec27a)}
+.outputList{max-height:220px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.fileItem{background:#06101a;padding:8px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:var(--muted);font-size:13px}
+input[type="file"]{display:none}
+label.fileBtn{cursor:pointer}
+@media (max-width:820px){ .grid{grid-template-columns:1fr} .side{order:2} .videoCard{order:1} }
