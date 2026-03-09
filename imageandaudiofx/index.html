@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Photo and Video Editor</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {
+    "imports": {}
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Photo and Video Editor</h1>
+      <div class="controls">
+        <input id="file" type="file" accept="image/*,video/*" />
+        <input id="searchEffects" type="search" placeholder="Search effects…" aria-label="Search effects" />
+        <button id="playPause" class="small hidden">Play/Pause</button>
+        <label class="small">Scale: <input id="scale" type="range" min="0.25" max="2" step="0.01" value="1" /></label>
+      </div>
+    </header>
+
+    <main>
+      <div class="canvas-wrap">
+        <canvas id="output"></canvas>
+        <video id="video" class="hidden" muted playsinline></video>
+      </div>
+
+      <aside class="sidebar">
+        <div class="effects">
+          <!-- Primary effects -->
+          <button class="effect" data-effect="none">None</button>
+          <button class="effect" data-effect="pinch">Bulge</button>
+          <button class="effect" data-effect="bulge">Pinch</button>
+          <button class="effect" data-effect="hwave">Horizontal Wave</button>
+          <button class="effect" data-effect="vwave">Vertical Wave</button>
+          <button class="effect" data-effect="bothwaves">Both Waves</button>
+          <button class="effect" data-effect="flip">Flip</button>
+          <button class="effect" data-effect="mirror-left">Mirror Left</button>
+          <button class="effect" data-effect="mirror-right">Mirror Right</button>
+          <button class="effect" data-effect="mirror-top">Mirror Top</button>
+          <button class="effect" data-effect="mirror-bottom">Mirror Bottom</button>
+          <button class="effect" data-effect="swirl">Swirl</button>
+          <button class="effect" data-effect="rswirl">Reversed Swirl</button>
+          <button class="effect" data-effect="does-respond">Does Respond</button>
+          <button class="effect" data-effect="does-not-respond">Does Not Respond</button>
+          <button class="effect" data-effect="ripple">Ripple</button>
+          <button class="effect" data-effect="confusion">CoNfUsIoN</button>
+          <button class="effect" data-effect="invert">Invert</button>
+          <button class="effect" data-effect="invert-hue">Invert Hue</button>
+          <button class="effect" data-effect="luig-group">Luig Group</button>
+          <button class="effect" data-effect="mari-group">Mari Group</button>
+          <button class="effect" data-effect="hue-cycle">Hue Cycle</button>
+          <button class="effect" data-effect="deform">Deform</button>
+          <button class="effect" data-effect="grayscale">Grayscale</button>
+          <button class="effect" data-effect="pixelate">Pixelate</button>
+          <button class="effect" data-effect="rgb2bgr">RGB→BGR</button>
+          <button class="effect" data-effect="crying">Crying</button>
+          <!-- New gradient-map effects -->
+          <button class="effect" data-effect="chorded">Chorded</button>
+          <button class="effect" data-effect="chorded-2014">Chorded (August 2014)</button>
+          <button class="effect" data-effect="chorded-2014-july">Chorded (July 2014)</button>
+          <button class="effect" data-effect="rainbow-map">Rainbow Gradient Map</button>
+          <button class="effect" data-effect="group">Group</button>
+          <button class="effect" data-effect="g-major-14">G-Major 14</button>
+          <button class="effect" data-effect="g-major-19">G-Major 19</button>
+          <button class="effect" data-effect="g-major-18">G-Major 18</button>
+          <button class="effect" data-effect="g-major-1">G-Major 1</button>
+          <button class="effect" data-effect="v-major">V-Major</button>
+          <button class="effect" data-effect="g-major-4">G-Major 4</button>
+          <button class="effect" data-effect="g-major-4-confusion">G-Major 4's CoNfUsIoN</button>
+          <button class="effect" data-effect="g-major-74">G-Major 74</button>
+          <button class="effect" data-effect="g-major-8">G-Major 8</button>
+          <button class="effect" data-effect="g-major-16">G-Major 16</button>
+          <button class="effect" data-effect="g-major-17">G-Major 17</button>
+          <button class="effect" data-effect="g-major-54">G-Major 54</button>
+          <button class="effect" data-effect="g-major-2">G-Major 2</button>
+          <button class="effect" data-effect="g-major-5">G-Major 5</button>
+          <button class="effect" data-effect="g-major-6">G-Major 6</button>
+          <button class="effect" data-effect="green-lowers">Green Lowers</button>
+          <button class="effect" data-effect="autovocoding">Autovocoding</button>
+          <button class="effect" data-effect="helium">Helium</button>
+          <button class="effect" data-effect="power">Power</button>
+          <button class="effect" data-effect="low-voice">Low Voice</button>
+          <button class="effect" data-effect="slow-voice">Slow Voice</button>
+          <button class="effect" data-effect="g-major-10">G-Major 10</button>
+          <button class="effect" data-effect="g-major-11">G-Major 11</button>
+          <button class="effect" data-effect="g-major-13">G-Major 13</button>
+          <button class="effect" data-effect="g-major-12">G-Major 12</button>
+          <button class="effect" data-effect="u-major">U-Major</button>
+          <button class="effect" data-effect="g-major-3">G-Major 3</button>
+          <button class="effect" data-effect="even-x-discontinues">Even X Discontinues</button>
+          <button class="effect" data-effect="i-defeated-x">I Defeated X</button>
+          <button class="effect" data-effect="blind-x">Blind X</button>
+          <button class="effect" data-effect="blind-major">Blind Major</button>
+          <button class="effect" data-effect="angry-x">Angry X</button>
+          <button class="effect" data-effect="happy-x">Happy X</button>
+          <button class="effect" data-effect="pika-major">Pika Major</button>
+          <button class="effect" data-effect="sponge">Sponge</button>
+          <button class="effect" data-effect="not-scary">Not Scary</button>
+          <button class="effect" data-effect="conga-busher">Conga Busher</button>
+          <button class="effect" data-effect="deaf">Deaf</button>
+          <button class="effect" data-effect="blind-and-deaf">Blind + Deaf</button>
+          <button class="effect" data-effect="g-major-677">G-Major 677</button>
+        </div>
+
+        <div class="sliders">
+          <label>Amount <input id="amount" type="range" min="-1.5" max="1.5" step="0.01" value="0.5"></label>
+          <label>Radius <input id="radius" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+          <label>Frequency <input id="frequency" type="range" min="1" max="40" step="0.5" value="10"></label>
+          <label>Pixel size <input id="pixelSize" type="range" min="1" max="80" step="1" value="8"></label>
+        </div>
+
+        <div class="bottom">
+          <button id="downloadImage">Download Image</button>
+          <button id="exportVideo">Export Video (Browser)</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <small>Tip: Load an image or a video. Select an effect and tweak sliders. Video rendering is done frame-by-frame in-browser.</small>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

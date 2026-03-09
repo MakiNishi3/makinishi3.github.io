@@ -1,0 +1,53 @@
+:root{
+  --bg:#0f1720;
+  --panel:#0b1220;
+  --accent:#1f6feb;
+  --muted:#9aa8bd;
+  --card:#0e1620;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+html,body,#app{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#07101a);color:#e6eef8}
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.03)}
+h1{font-size:16px;margin:0;font-weight:600}
+.controls{display:flex;gap:8px;align-items:center}
+.controls input[type="search"]{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius:8px;
+  min-width:160px;
+  outline:none;
+  transition:all 120ms ease;
+}
+.controls input[type="search"]::placeholder{ color: rgba(154,168,189,0.7); }
+.controls input[type="search"]:focus{
+  box-shadow: 0 0 0 3px rgba(31,111,235,0.12);
+  border-color: rgba(31,111,235,0.18);
+  color: #e6eef8;
+}
+.controls input[type=file]{background:rgba(255,255,255,0.04);padding:8px;border-radius:8px;color:var(--muted)}
+.small{padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+main{display:flex;gap:12px;padding:12px;height:calc(100% - 120px)}
+.canvas-wrap{flex:1;display:flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px}
+canvas{max-width:100%;max-height:100%;background:#000;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+.sidebar{width:320px;background:var(--panel);padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:10px}
+.effects{display:flex;flex-wrap:wrap;gap:8px;max-height:50vh;overflow:auto;padding-right:6px}
+.effect{flex:0 0 48%;padding:8px;background:var(--card);border-radius:8px;border:1px solid rgba(255,255,255,0.03);color:var(--muted);text-align:center}
+.effect.active{background:var(--accent);color:white;border-color:rgba(255,255,255,0.06)}
+.sliders{display:flex;flex-direction:column;gap:8px;padding:6px;background:rgba(255,255,255,0.02);border-radius:8px}
+label{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+input[type=range]{width:100%}
+.bottom{display:flex;gap:8px;justify-content:space-between;margin-top:auto}
+button{cursor:pointer}
+.hidden{display:none}
+footer{padding:10px 16px;color:var(--muted);font-size:13px}
+@media (max-width:900px){
+  main{flex-direction:column}
+  .sidebar{width:100%;order:2}
+  /* Make the preview larger on mobile and let the canvas fill the available area */
+  .canvas-wrap{order:1;height:75vh;padding:8px}
+  /* Keep canvas CSS sized to its container but DO NOT force intrinsic pixel scaling;
+     app.js will set canvas.width/height to device pixels for crisp rendering. */
+  .canvas-wrap canvas{max-width:100%;max-height:100%;border-radius:8px;display:block;width:auto;height:auto}
+}
