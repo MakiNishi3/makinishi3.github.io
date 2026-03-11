@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/p5.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/addons/p5.sound.min.js"></script>
+	<script src="mySketch.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+  html,
+body {
+	margin: 0;
+	padding: 0;
+}
+<body>
+<script>
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+	textFont("Verdana");
+	textAlign(CENTER, CENTER);
+}
+
+function draw() {
+	background(0,255,0);
+	textSize(125);
+	push();
+	translate(width/2, height/2 - 100);
+	translate(cos(8.5 + frameCount * 0.07) * 50, sin(0.5 + frameCount * 0.05) * 50)
+	rotate(sin(frameCount * 0.1) / 5);
+	text("1200 FOLLOWING!", 0, 0);
+	pop();
+	textSize(25);
+	fill(255,255,0);
+	text("THANK YOU SO MUCH", width/2, height/2 + 100);
+	
+	textSize(15);
+	text("", width/2, height - 100);
+}
+</style>
+	</script>
+</body>
+
+</html>
